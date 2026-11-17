@@ -1,6 +1,6 @@
 import React from 'react';
 
-export type ActiveTab = 'navigator' | 'directory' | 'brief' | 'walkthrough';
+export type ActiveTab = 'navigator' | 'directory' | 'walkthrough';
 
 interface TopNavProps {
   activeTab: ActiveTab;
@@ -16,7 +16,6 @@ export const TopNav: React.FC<TopNavProps> = ({
   const navItems: { id: ActiveTab; label: string }[] = [
     { id: 'navigator', label: 'Care Navigator' },
     { id: 'directory', label: 'Services Directory' },
-    { id: 'brief', label: 'Product Brief' },
     { id: 'walkthrough', label: 'Walkthrough' },
   ];
 

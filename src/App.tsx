@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { TopNav, type ActiveTab } from './components/TopNav';
 import { NavigatorWorkspace } from './components/NavigatorWorkspace';
 import { DirectoryView } from './components/DirectoryView';
-import { ProductBriefView } from './components/ProductBriefView';
 import { WalkthroughView } from './components/WalkthroughView';
 import { CounselorBookingDrawer } from './components/CounselorBookingDrawer';
 import { InteractiveSelfHelpModal } from './components/InteractiveSelfHelpModal';
@@ -196,8 +195,6 @@ export default function App() {
             onLaunchStep={handleLaunchStep}
           />
         )}
-
-        {activeTab === 'brief' && <ProductBriefView />}
 
         {activeTab === 'walkthrough' && (
           <WalkthroughView

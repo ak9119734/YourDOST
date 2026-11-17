@@ -1,0 +1,153 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R 4 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> /Contents 7 0 R >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> /Contents 8 0 R >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+7 0 obj
+<< /Length 6392 >>
+stream
+0.122 0.431 0.365 rg BT /F2 8.5 Tf 54 742 Td (PRODUCT CASE STUDY  |  YOURDOST CARE NAVIGATOR) Tj ET
+0.110 0.141 0.129 rg BT /F2 17.5 Tf 54 720 Td (YourDOST Next-Step Navigator: Turning Wellbeing) Tj ET
+0.110 0.141 0.129 rg BT /F2 17.5 Tf 54 700 Td (Choice Overload into Action) Tj ET
+0.341 0.353 0.337 rg BT /F1 9.5 Tf 54 683 Td (How constrained, safety-first AI triage helps employees move from uncertain distress to the) Tj ET
+0.341 0.353 0.337 rg BT /F1 9.5 Tf 54 670.2 Td (single most relevant YourDOST intervention across Counseling, Self-Help, Assessments, and) Tj ET
+0.341 0.353 0.337 rg BT /F1 9.5 Tf 54 657.4000000000001 Td (Programs.) Tj ET
+0.86 0.855 0.835 RG 0.75 w 54 639.6000000000001 m 558 639.6000000000001 l S
+0.110 0.141 0.129 rg BT /F2 12 Tf 54 619.6000000000001 Td (01. Identify the Opportunity & Why AI) Tj ET
+0.122 0.431 0.365 rg BT /F2 9.5 Tf 54 603.6000000000001 Td (The Specific User Problem: Choice & Initiation Overload) Tj ET
+0.341 0.353 0.337 rg BT /F1 9.2 Tf 54 590.6000000000001 Td (Employees opening a mental wellbeing portal rarely think in clinical or product categories.) Tj ET
+0.341 0.353 0.337 rg BT /F1 9.2 Tf 54 577.8000000000002 Td (Someone facing a release crunch, 3 AM insomnia, and friction with a manager does not know whether) Tj ET
+0.341 0.353 0.337 rg BT /F1 9.2 Tf 54 565.0000000000002 Td (they need a 45-minute counseling session, a quick burnout check, a multi-week program, or a) Tj ET
+0.341 0.353 0.337 rg BT /F1 9.2 Tf 54 552.2000000000003 Td (2-minute reset. Faced with four service pillars and dozens of resources, fatigued employees) Tj ET
+0.341 0.353 0.337 rg BT /F1 9.2 Tf 54 539.4000000000003 Td (experience decision paralysis and leave without taking any step.) Tj ET
+0.122 0.431 0.365 rg BT /F2 9.5 Tf 54 519.6000000000004 Td (Why AI Is Appropriate for This Problem) Tj ET
+0.341 0.353 0.337 rg BT /F1 9.0 Tf 58 506.60000000000036 Td (- Unstructured to Structured Routing: Translates messy, overlapping life contexts written in) Tj ET
+0.341 0.353 0.337 rg BT /F1 9.0 Tf 58 494.10000000000036 Td (plain words into exact YourDOST catalog recommendations using schema-constrained JSON output.) Tj ET
+0.341 0.353 0.337 rg BT /F1 9.0 Tf 58 479.60000000000036 Td (- Constraint Adaptation: Rigid branching forms feel bureaucratic when energy is low, and) Tj ET
+0.341 0.353 0.337 rg BT /F1 9.0 Tf 58 467.10000000000036 Td (keyword search ignores bandwidth. AI weighs emotional urgency alongside time available \(5 / 15) Tj ET
+0.341 0.353 0.337 rg BT /F1 9.0 Tf 58 454.60000000000036 Td (/ 30+ min\), current energy, and format preference.) Tj ET
+0.341 0.353 0.337 rg BT /F1 9.0 Tf 58 440.10000000000036 Td (- Transparent Rationale: Explains in two calm, human sentences why a specific next step fits) Tj ET
+0.341 0.353 0.337 rg BT /F1 9.0 Tf 58 427.60000000000036 Td (right now, lowering hesitation without diagnosing or lecturing.) Tj ET
+0.86 0.855 0.835 RG 0.75 w 54 407.10000000000036 m 558 407.10000000000036 l S
+0.110 0.141 0.129 rg BT /F2 12 Tf 54 388.10000000000036 Td (02. Working Prototype & End-to-End User Journeys) Tj ET
+0.341 0.353 0.337 rg BT /F1 9.2 Tf 54 374.10000000000036 Td (Built as a full-stack interactive prototype \(React + TypeScript + Tailwind CSS frontend; Express &) Tj ET
+0.341 0.353 0.337 rg BT /F1 9.2 Tf 54 361.30000000000035 Td (Node ESM serverless API powered by Gemini via @google/genai\) using strictly synthetic employee) Tj ET
+0.341 0.353 0.337 rg BT /F1 9.2 Tf 54 348.50000000000034 Td (scenarios and specialist profiles.) Tj ET
+0.965 0.962 0.949 rg 0.860 0.855 0.835 RG 0.75 w 54 257.70000000000033 244 70 re B
+0.110 0.141 0.129 rg BT /F2 9.2 Tf 64 312.70000000000033 Td (1. Low-Friction Context Intake) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.5 Tf 64 298.70000000000033 Td (Plain-language check-in + 3 one-tap) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.5 Tf 64 287.20000000000033 Td (constraint selectors \(Time, Energy, Format\)) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.5 Tf 64 275.70000000000033 Td (and 4 instant test scenarios.) Tj ET
+0.965 0.962 0.949 rg 0.860 0.855 0.835 RG 0.75 w 314 257.70000000000033 244 70 re B
+0.110 0.141 0.129 rg BT /F2 9.2 Tf 324 312.70000000000033 Td (2. 1 Primary + 2 Supporting Steps) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.5 Tf 324 298.70000000000033 Td (Ranks one clear Primary Next Step with a) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.5 Tf 324 287.20000000000033 Td (tailored 'Why this fits' explanation plus 2) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.5 Tf 324 275.70000000000033 Td (alternative options.) Tj ET
+0.965 0.962 0.949 rg 0.860 0.855 0.835 RG 0.75 w 54 178.70000000000033 244 70 re B
+0.110 0.141 0.129 rg BT /F2 9.2 Tf 64 233.70000000000033 Td (3. In-Flow Interactive Execution) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.5 Tf 64 219.70000000000033 Td (Launches a live 2-min breathing pacer,) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.5 Tf 64 208.20000000000033 Td (worry-split tool, 4-question pulse check,) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.5 Tf 64 196.70000000000033 Td (or confidential 1-on-1 booking drawer.) Tj ET
+0.965 0.962 0.949 rg 0.860 0.855 0.835 RG 0.75 w 314 178.70000000000033 244 70 re B
+0.110 0.141 0.129 rg BT /F2 9.2 Tf 324 233.70000000000033 Td (4. Refinement & Manual Bypass) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.5 Tf 324 219.70000000000033 Td (One-line follow-up adjusts recommendations) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.5 Tf 324 208.20000000000033 Td (on the fly; Services Directory guarantees) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.5 Tf 324 196.70000000000033 Td (direct manual access anytime.) Tj ET
+0.945 0.968 0.960 rg 0.860 0.855 0.835 RG 0.75 w 54 106.70000000000033 504 60 re B
+0.122 0.431 0.365 rg BT /F2 9 Tf 64 150.70000000000033 Td (End-to-End Closed Loop Example \(Assessment -> Recalibration -> Booking\)) Tj ET
+0.110 0.141 0.129 rg BT /F1 8.4 Tf 64 136.70000000000033 Td (An exhausted employee completes a 3-min Burnout Pulse Check inside the app -> score band feeds) Tj ET
+0.110 0.141 0.129 rg BT /F1 8.4 Tf 64 125.20000000000033 Td (back into AI triage -> navigator recommends Dr. Ananya Deshmukh -> user reserves a confidential) Tj ET
+0.110 0.141 0.129 rg BT /F1 8.4 Tf 64 113.70000000000033 Td (Chat/Audio/Video slot.) Tj ET
+0.86 0.855 0.835 RG 0.75 w 54 46 m 558 46 l S
+0.341 0.353 0.337 rg BT /F1 8 Tf 54 32 Td (YourDOST Next-Step Navigator  |  Product & Architecture Brief) Tj ET
+0.341 0.353 0.337 rg BT /F1 8 Tf 512 32 Td (Page 1 of 2) Tj ET
+endstream
+endobj
+8 0 obj
+<< /Length 5966 >>
+stream
+0.122 0.431 0.365 rg BT /F2 8.5 Tf 54 742 Td (PRODUCT DECISIONS, SAFEGUARDS & WALKTHROUGH) Tj ET
+0.110 0.141 0.129 rg BT /F2 12 Tf 54 722 Td (03. Assumptions & Key Product Trade-Offs) Tj ET
+0.110 0.141 0.129 rg BT /F2 9.2 Tf 54 707 Td (Care Router, Not AI Therapist \(Safety over Open Chat\):) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.9 Tf 54 694.5 Td (We avoided building an open-ended therapy chatbot, which risks clinical overreach or keeping) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.9 Tf 54 682.5 Td (distressed users talking to software instead of people. Restricting Gemini via JSON schema to) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.9 Tf 54 670.5 Td (vetted catalog IDs keeps human counselors central.) Tj ET
+0.110 0.141 0.129 rg BT /F2 9.2 Tf 54 653.5 Td (Stateless Privacy over Longitudinal Memory:) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.9 Tf 54 641.0 Td (In corporate EAP settings, fear of employer visibility blocks adoption. Check-ins run ephemerally) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.9 Tf 54 629.0 Td (per session without storing raw personal disclosures in a database, trading multi-month memory for) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.9 Tf 54 617.0 Td (psychological safety.) Tj ET
+0.110 0.141 0.129 rg BT /F2 9.2 Tf 54 600.0 Td (Brevity over Diagnostic Depth:) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.9 Tf 54 587.5 Td (Three lightweight constraint selectors capture enough signal to separate a 2-minute grounding) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.9 Tf 54 575.5 Td (exercise from a 30-minute counseling booking without intimidating fatigued users.) Tj ET
+0.86 0.855 0.835 RG 0.75 w 54 558.5 m 558 558.5 l S
+0.110 0.141 0.129 rg BT /F2 12 Tf 54 541.5 Td (04. Handling AI Errors, Sensitive Data & Human Escalation) Tj ET
+0.965 0.962 0.949 rg 0.860 0.855 0.835 RG 0.75 w 54 470.5 504 58 re B
+0.122 0.431 0.365 rg BT /F2 9 Tf 64 513.5 Td (Acute Crisis & Human Support) Tj ET
+0.110 0.141 0.129 rg BT /F1 8.4 Tf 64 500.5 Td (Dual-layer guardrail: deterministic crisis regex pre-filter + AI urgency classification. When) Tj ET
+0.110 0.141 0.129 rg BT /F1 8.4 Tf 64 489.0 Td (triggered, self-help quizzes are suppressed and the UI routes straight to 24/7 helplines and a) Tj ET
+0.110 0.141 0.129 rg BT /F1 8.4 Tf 64 477.5 Td (priority 15-min counselor callback.) Tj ET
+0.965 0.962 0.949 rg 0.860 0.855 0.835 RG 0.75 w 54 406.5 504 58 re B
+0.122 0.431 0.365 rg BT /F2 9 Tf 64 449.5 Td (Sensitive Employee PII) Tj ET
+0.110 0.141 0.129 rg BT /F1 8.4 Tf 64 436.5 Td (Server logs automatically strip emails and phone numbers; raw check-in narratives are never) Tj ET
+0.110 0.141 0.129 rg BT /F1 8.4 Tf 64 425.0 Td (persisted or shared with employer HR systems; counselor booking supports blank/anonymous display) Tj ET
+0.110 0.141 0.129 rg BT /F1 8.4 Tf 64 413.5 Td (aliases.) Tj ET
+0.965 0.962 0.949 rg 0.860 0.855 0.835 RG 0.75 w 54 342.5 504 58 re B
+0.122 0.431 0.365 rg BT /F2 9 Tf 64 385.5 Td (AI Errors & Latency Resilience) Tj ET
+0.110 0.141 0.129 rg BT /F1 8.4 Tf 64 372.5 Td (Primary low-latency model \(gemini-3.1-flash-lite\) with a 12s timeout guard and fallback) Tj ET
+0.110 0.141 0.129 rg BT /F1 8.4 Tf 64 361.0 Td (\(gemini-4-hydrogen\), plus safe client JSON parsing. Failures display a calm recovery card with) Tj ET
+0.110 0.141 0.129 rg BT /F1 8.4 Tf 64 349.5 Td (manual counselor & 2-min reset links.) Tj ET
+0.86 0.855 0.835 RG 0.75 w 54 334.5 m 558 334.5 l S
+0.110 0.141 0.129 rg BT /F2 12 Tf 54 318.5 Td (05. Measuring Success) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.8 Tf 54 305.5 Td (- Next-Step Initiation Rate: % of navigator sessions that launch a recommended exercise, pulse check,) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.8 Tf 54 293.5 Td (or counselor slot.) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.8 Tf 54 280.0 Td (- Time-to-First-Action: Median seconds from portal arrival to starting relevant support \(target <) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.8 Tf 54 268.0 Td (90s\).) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.8 Tf 54 254.5 Td (- 1-Turn Match Rate: % accepted without requiring follow-up refinement or abandoning to manual search.) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.8 Tf 54 241.0 Td (- Escalation Precision: Zero missed urgent-distress escalations in anonymized clinician QA audits.) Tj ET
+0.86 0.855 0.835 RG 0.75 w 54 223.5 m 558 223.5 l S
+0.110 0.141 0.129 rg BT /F2 12 Tf 54 207.5 Td (06. Brief Prototype Walkthrough \(5 Interactive Journeys\)) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.7 Tf 54 194.5 Td (1. Q4 Launch Burnout \(15 min, Low Energy\): Verifies AI avoids heavy multi-week programs and) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.7 Tf 54 182.9 Td (recommends a low-effort reset or 3-min pulse check.) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.7 Tf 54 169.8 Td (2. Manager Tension & 3 AM Waking \(30+ min, Talk to Someone\): Matches specialist Rohan Kulkarni and) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.7 Tf 54 158.20000000000002 Td (completes a synthetic Chat/Audio/Video slot booking.) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.7 Tf 54 145.10000000000002 Td (3. Acute Midday Overwhelm \(5 min, Self-Guided\): Respects strict time bounds and opens the live) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.7 Tf 54 133.50000000000003 Td (interactive 2-Minute Physiological Reset breathing pacer.) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.7 Tf 54 120.40000000000003 Td (4. Acute Distress \(Safety Escalation\): Suppresses self-help tasks and elevates 24/7 helplines plus) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.7 Tf 54 108.80000000000004 Td (one-click Priority Counselor Callback.) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.7 Tf 54 95.70000000000005 Td (5. Assessment Loop & Services Directory: Complete a 4-question pulse check to recalibrate AI) Tj ET
+0.341 0.353 0.337 rg BT /F1 8.7 Tf 54 84.10000000000005 Td (routing, or browse all services manually anytime.) Tj ET
+0.86 0.855 0.835 RG 0.75 w 54 46 m 558 46 l S
+0.341 0.353 0.337 rg BT /F1 8 Tf 54 32 Td (YourDOST Next-Step Navigator  |  Product & Architecture Brief) Tj ET
+0.341 0.353 0.337 rg BT /F1 8 Tf 512 32 Td (Page 2 of 2) Tj ET
+endstream
+endobj
+xref
+0 9
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000121 00000 n 
+0000000257 00000 n 
+0000000393 00000 n 
+0000000463 00000 n 
+0000000538 00000 n 
+0000006982 00000 n 
+trailer
+<< /Size 9 /Root 1 0 R >>
+startxref
+13000
+%%EOF
