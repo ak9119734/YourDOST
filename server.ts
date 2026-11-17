@@ -20,7 +20,7 @@ dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const PORT = 3000;
+const PORT = Number(process.env.PORT) || 3000;
 
 const CRISIS_PATTERNS: RegExp[] = [
   /\b(suicide|suicidal|kill myself|end my life|want to die|better off dead|self[- ]?harm|cut myself|hurt myself)\b/i,
@@ -125,8 +125,8 @@ const VALID_IDS = new Set([
 ]);
 
 function getGeminiClient(): GoogleGenAI {
-  const apiKey = process.env.GEMINI_API_KEY;
-  if (!apiKey || apiKey === 'MY_GEMINI_API_KEY') {
+  const apiKey = process.env.GEMINI_API_KEY?.trim();
+  if (!apiKey) {
     throw new Error('GEMINI_API_KEY_MISSING');
   }
   return new GoogleGenAI({
@@ -337,7 +337,7 @@ function sendNavigatorError(res: express.Response, err: unknown, routeTag: strin
     return res.status(503).json({
       error: 'AI_UNAVAILABLE',
       message:
-        'AI guidance is temporarily unavailable because the Gemini API key is not configured. You can browse counselors and self-help tools directly below.',
+        'AI guidance is temporarily unavailable because the GEMINI_API_KEY environment variable is not set. You can browse counselors and self-help tools directly below.',
     });
   }
 
@@ -345,7 +345,7 @@ function sendNavigatorError(res: express.Response, err: unknown, routeTag: strin
     return res.status(errStatus || 403).json({
       error: 'GEMINI_AUTH_ERROR',
       message:
-        'AI guidance could not authenticate with the configured API key. Please check GEMINI_API_KEY in Settings > Secrets, or browse counselors and self-help tools directly below.',
+        'AI guidance could not authenticate with the GEMINI_API_KEY environment variable. Please verify the key in your deployment environment or Secrets panel, or browse counselors and self-help tools directly below.',
     });
   }
 
