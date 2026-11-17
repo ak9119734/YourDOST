@@ -1,49 +1,141 @@
 import { GoogleGenAI, Type, ThinkingLevel } from '@google/genai';
-import {
-  COUNSELORS,
-  SELF_HELP_RESOURCES,
-  ASSESSMENTS,
-  WELLBEING_PROGRAMS,
-} from '../src/data/wellbeingCatalog';
-import type {
-  BookingConfirmation,
-  NavigatorRecommendationResponse,
-  UserContextInput,
-} from '../src/types';
 
-const CRISIS_PATTERNS: RegExp[] = [
+const COUNSELOR_CATALOG = [
+  {
+    id: 'counselor-ananya',
+    name: 'Dr. Ananya Deshmukh',
+    specialties: ['Workplace burnout', 'Anxiety & overwhelm', 'Boundary setting'],
+    nextAvailable: 'Today, 4:30 PM',
+    sessionFormats: ['Chat', 'Audio', 'Video'],
+  },
+  {
+    id: 'counselor-rohan',
+    name: 'Rohan Kulkarni',
+    specialties: ['Manager conflict', 'Career transitions', 'Imposter feelings'],
+    nextAvailable: 'Today, 5:15 PM',
+    sessionFormats: ['Chat', 'Audio', 'Video'],
+  },
+  {
+    id: 'counselor-meera',
+    name: 'Meera Kapoor',
+    specialties: ['Sleep recovery', 'Somatic stress', 'Caregiver & parent balance'],
+    nextAvailable: 'Today, 8:00 PM',
+    sessionFormats: ['Chat', 'Audio', 'Video'],
+  },
+];
+
+const SELF_HELP_CATALOG = [
+  {
+    id: 'self-help-breathing',
+    title: '2-Minute Physiological Reset',
+    durationLabel: '2 min · Guided pacing',
+    category: 'Acute calm',
+    summary:
+      'Slows racing heart rate and breaks acute overwhelm through four paced 4-4-4-4 breathing cycles.',
+  },
+  {
+    id: 'self-help-worry-triage',
+    title: '5-Minute Control & Priority Split',
+    durationLabel: '5 min · Interactive worksheet',
+    category: 'Mental clarity',
+    summary:
+      'Separates what needs one concrete action today from background worries you can deliberately park.',
+  },
+  {
+    id: 'self-help-sleep-winddown',
+    title: 'Evening Off-Ramp Protocol',
+    durationLabel: '6 min · Wind-down checklist',
+    category: 'Sleep & recovery',
+    summary:
+      'A low-effort end-of-workday transition to stop replaying Slack threads and unresolved tasks before bed.',
+  },
+];
+
+const ASSESSMENT_CATALOG = [
+  {
+    id: 'assessment-burnout-pulse',
+    title: 'Burnout & Recovery Pulse Check',
+    durationLabel: '3 min · 4 questions',
+    summary:
+      'Distinguishes temporary heavy-week fatigue from deeper emotional exhaustion so you pick the right support level.',
+  },
+  {
+    id: 'assessment-stress-sleep',
+    title: 'Acute Stress & Sleep Check',
+    durationLabel: '3 min · 4 questions',
+    summary:
+      'Evaluates how current stressors are affecting sleep onset, physical tension, and day-to-day focus.',
+  },
+];
+
+const PROGRAM_CATALOG = [
+  {
+    id: 'program-boundaries',
+    title: 'Sustainable Boundaries & Focus',
+    durationLabel: '14-day cohort · 10 min/day',
+    focusArea: 'Burnout prevention',
+    summary:
+      'Practical scripts and workload habits for high-output employees learning to say no without guilt.',
+  },
+  {
+    id: 'program-sleep',
+    title: 'Deep Sleep & Nervous System Reset',
+    durationLabel: '21-day guided track · 8 min/evening',
+    focusArea: 'Rest & recovery',
+    summary:
+      'Evidence-informed CBT-I habits to rebuild consistent sleep drive and quiet late-night rumination.',
+  },
+  {
+    id: 'program-conversations',
+    title: 'Navigating Difficult Workplace Conversations',
+    durationLabel: '3-week micro-program · 12 min/session',
+    focusArea: 'Workplace relationships',
+    summary:
+      'Builds calm confidence before performance reviews, scope pushback, or tense peer conversations.',
+  },
+];
+
+const COUNSELOR_IDS = new Set(COUNSELOR_CATALOG.map((c) => c.id));
+const VALID_IDS = new Set([
+  ...COUNSELOR_CATALOG.map((c) => c.id),
+  ...SELF_HELP_CATALOG.map((s) => s.id),
+  ...ASSESSMENT_CATALOG.map((a) => a.id),
+  ...PROGRAM_CATALOG.map((p) => p.id),
+]);
+
+const CRISIS_PATTERNS = [
   /\b(suicide|suicidal|kill myself|end my life|want to die|better off dead|self[- ]?harm|cut myself|hurt myself)\b/i,
   /\b(not safe|unsafe being alone|cannot go on|no reason to live|hopeless.*tonight|end it all)\b/i,
 ];
 
-export function detectDeterministicCrisis(text: string): boolean {
+export function detectDeterministicCrisis(text) {
   return CRISIS_PATTERNS.some((pattern) => pattern.test(text));
 }
 
-export function redactForLogs(text: string): string {
-  return text
+export function redactForLogs(text) {
+  return String(text || '')
     .replace(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, '[REDACTED_EMAIL]')
     .replace(/\b\d{10,13}\b/g, '[REDACTED_PHONE]')
     .slice(0, 60);
 }
 
-function getCatalogSummaryForPrompt(): string {
-  const counselorsText = COUNSELORS.map(
+function getCatalogSummaryForPrompt() {
+  const counselorsText = COUNSELOR_CATALOG.map(
     (c) =>
       `- ID: "${c.id}" | Pillar: "counseling" | Title: "1-on-1 Session with ${c.name}" | Specialties: ${c.specialties.join(', ')} | Next slot: ${c.nextAvailable} | Formats: ${c.sessionFormats.join('/')}`
   ).join('\n');
 
-  const selfHelpText = SELF_HELP_RESOURCES.map(
+  const selfHelpText = SELF_HELP_CATALOG.map(
     (s) =>
       `- ID: "${s.id}" | Pillar: "self_help" | Title: "${s.title}" | Duration: ${s.durationLabel} | Focus: ${s.category} — ${s.summary}`
   ).join('\n');
 
-  const assessmentsText = ASSESSMENTS.map(
+  const assessmentsText = ASSESSMENT_CATALOG.map(
     (a) =>
       `- ID: "${a.id}" | Pillar: "assessment" | Title: "${a.title}" | Duration: ${a.durationLabel} | Summary: ${a.summary}`
   ).join('\n');
 
-  const programsText = WELLBEING_PROGRAMS.map(
+  const programsText = PROGRAM_CATALOG.map(
     (p) =>
       `- ID: "${p.id}" | Pillar: "program" | Title: "${p.title}" | Duration: ${p.durationLabel} | Focus: ${p.focusArea} — ${p.summary}`
   ).join('\n');
@@ -63,7 +155,7 @@ function getCatalogSummaryForPrompt(): string {
   ].join('\n');
 }
 
-export function buildUrgentHumanResponse(reason: string): NavigatorRecommendationResponse {
+export function buildUrgentHumanResponse(reason) {
   return {
     urgencyLevel: 'urgent_human',
     safetyEscalationReason: reason,
@@ -106,15 +198,8 @@ export function buildUrgentHumanResponse(reason: string): NavigatorRecommendatio
   };
 }
 
-const VALID_IDS = new Set([
-  ...COUNSELORS.map((c) => c.id),
-  ...SELF_HELP_RESOURCES.map((s) => s.id),
-  ...ASSESSMENTS.map((a) => a.id),
-  ...WELLBEING_PROGRAMS.map((p) => p.id),
-]);
-
-function getGeminiClient(): GoogleGenAI {
-  const apiKey = process.env.GEMINI_API_KEY?.trim();
+function getGeminiClient() {
+  const apiKey = process.env.GEMINI_API_KEY ? process.env.GEMINI_API_KEY.trim() : '';
   if (!apiKey) {
     throw new Error('GEMINI_API_KEY_MISSING');
   }
@@ -128,11 +213,8 @@ function getGeminiClient(): GoogleGenAI {
   });
 }
 
-export async function generateRecommendationWithRetry(
-  input: UserContextInput,
-  followUpNote?: string
-): Promise<NavigatorRecommendationResponse> {
-  const combinedText = `${input.message} ${followUpNote ?? ''}`.trim();
+export async function generateRecommendationWithRetry(input, followUpNote) {
+  const combinedText = `${input.message} ${followUpNote || ''}`.trim();
   if (detectDeterministicCrisis(combinedText)) {
     return buildUrgentHumanResponse(
       'Detected expressions of severe hopelessness or potential safety risk. Routing immediately to live human support.'
@@ -192,12 +274,12 @@ ${getCatalogSummaryForPrompt()}`;
     required: ['id', 'pillar', 'title', 'whyThisFits', 'expectedDuration', 'actionLabel'],
   };
 
-  const modelAttempts: Array<{ model: string; thinkingLevel: ThinkingLevel }> = [
+  const modelAttempts = [
     { model: 'gemini-3.1-flash-lite', thinkingLevel: ThinkingLevel.MINIMAL },
     { model: 'gemini-4-hydrogen', thinkingLevel: ThinkingLevel.LOW },
   ];
 
-  let lastError: unknown;
+  let lastError;
   for (let attempt = 0; attempt < modelAttempts.length; attempt++) {
     const { model, thinkingLevel } = modelAttempts[attempt];
     try {
@@ -250,18 +332,18 @@ ${getCatalogSummaryForPrompt()}`;
             },
           },
         }),
-        new Promise<never>((_, reject) =>
+        new Promise((_, reject) =>
           setTimeout(() => reject(new Error(`UPSTREAM_TIMEOUT:${model}`)), 12000)
         ),
       ]);
 
-      const rawText = (response.text ?? '')
+      const rawText = (response.text || '')
         .trim()
         .replace(/^```json\s*/i, '')
         .replace(/^```\s*/i, '')
         .replace(/```\s*$/i, '')
         .trim();
-      const parsed = JSON.parse(rawText) as NavigatorRecommendationResponse;
+      const parsed = JSON.parse(rawText);
 
       if (parsed.urgencyLevel === 'urgent_human') {
         return buildUrgentHumanResponse(
@@ -270,19 +352,18 @@ ${getCatalogSummaryForPrompt()}`;
         );
       }
 
-      const normalizeStep = (step: NavigatorRecommendationResponse['primaryRecommendation']) => {
-        const safeId = VALID_IDS.has(step.id) ? step.id : 'self-help-worry-triage';
-        const counselorMatch = COUNSELORS.find((c) => c.id === safeId);
+      const normalizeStep = (step) => {
+        const safeId = step && VALID_IDS.has(step.id) ? step.id : 'self-help-worry-triage';
         return {
           ...step,
           id: safeId,
-          counselorId: counselorMatch ? counselorMatch.id : undefined,
+          counselorId: COUNSELOR_IDS.has(safeId) ? safeId : undefined,
         };
       };
 
       const primary = normalizeStep(parsed.primaryRecommendation);
       const secondaries = (parsed.secondaryRecommendations || [])
-        .filter((s) => s.id !== primary.id)
+        .filter((s) => s && s.id !== primary.id)
         .slice(0, 2)
         .map(normalizeStep);
 
@@ -311,15 +392,10 @@ ${getCatalogSummaryForPrompt()}`;
   throw lastError;
 }
 
-export function mapNavigatorError(err: unknown): {
-  status: number;
-  body: { error: string; message: string };
-} {
+export function mapNavigatorError(err) {
   const errMessage = err instanceof Error ? err.message : 'Unknown error';
   const errStatus =
-    typeof err === 'object' && err !== null && 'status' in err
-      ? (err as { status?: number }).status
-      : undefined;
+    typeof err === 'object' && err !== null && 'status' in err ? err.status : undefined;
 
   if (errMessage === 'GEMINI_API_KEY_MISSING') {
     return {
@@ -368,14 +444,8 @@ export function mapNavigatorError(err: unknown): {
   };
 }
 
-export function createSyntheticBooking(payload: {
-  counselorId?: string;
-  format?: 'Chat' | 'Audio' | 'Video';
-  slot?: string;
-  alias?: string;
-  priorityCallback?: boolean;
-}): BookingConfirmation {
-  const counselor = COUNSELORS.find((c) => c.id === payload.counselorId) || COUNSELORS[0];
+export function createSyntheticBooking(payload = {}) {
+  const counselor = COUNSELOR_CATALOG.find((c) => c.id === payload.counselorId) || COUNSELOR_CATALOG[0];
   const refNumber = Math.floor(1000 + Math.random() * 9000);
 
   return {
@@ -385,8 +455,28 @@ export function createSyntheticBooking(payload: {
     slot: payload.priorityCallback
       ? 'Priority callback within 15 minutes'
       : payload.slot || counselor.nextAvailable,
-    alias: (payload.alias && payload.alias.trim()) || 'Anonymous Employee',
+    alias: (payload.alias && String(payload.alias).trim()) || 'Anonymous Employee',
     priorityCallback: Boolean(payload.priorityCallback),
     createdAt: new Date().toISOString(),
   };
+}
+
+export async function parseRequestBody(req) {
+  if (req.body !== undefined && req.body !== null) {
+    if (typeof req.body === 'string') {
+      return JSON.parse(req.body || '{}');
+    }
+    if (Buffer.isBuffer(req.body)) {
+      return JSON.parse(req.body.toString('utf8') || '{}');
+    }
+    if (typeof req.body === 'object') {
+      return req.body;
+    }
+  }
+  const chunks = [];
+  for await (const chunk of req) {
+    chunks.push(typeof chunk === 'string' ? Buffer.from(chunk) : chunk);
+  }
+  const raw = Buffer.concat(chunks).toString('utf8').trim();
+  return raw ? JSON.parse(raw) : {};
 }

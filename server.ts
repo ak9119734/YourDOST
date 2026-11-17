@@ -8,7 +8,7 @@ import {
   generateRecommendationWithRetry,
   mapNavigatorError,
   redactForLogs,
-} from './lib/navigatorService';
+} from './api/_navigator.js';
 import type { UserContextInput } from './src/types';
 
 dotenv.config();
