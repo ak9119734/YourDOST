@@ -40,6 +40,17 @@ export default function App() {
   const [activeResourceId, setActiveResourceId] = useState<string | null>(null);
   const [activeResourcePillar, setActiveResourcePillar] = useState<ServicePillar | null>(null);
 
+  const parseJsonResponse = async (res: Response) => {
+    const raw = await res.text();
+    try {
+      return JSON.parse(raw) as Record<string, unknown>;
+    } catch {
+      throw new Error(
+        `The AI service endpoint returned an unexpected response (HTTP ${res.status}). Ensure your server or /api serverless functions are deployed with GEMINI_API_KEY configured.`
+      );
+    }
+  };
+
   const handleSubmitCheckIn = async (overrideContext?: UserContextInput) => {
     const ctx = overrideContext || inputContext;
     if (ctx.message.trim().length < 6) return;
@@ -54,12 +65,14 @@ export default function App() {
         body: JSON.stringify(ctx),
       });
 
-      const data = await res.json();
+      const data = await parseJsonResponse(res);
       if (!res.ok) {
-        throw new Error(data.message || 'Could not retrieve recommendation.');
+        throw new Error(
+          typeof data.message === 'string' ? data.message : 'Could not retrieve recommendation.'
+        );
       }
 
-      setRecommendation(data as NavigatorRecommendationResponse);
+      setRecommendation(data as unknown as NavigatorRecommendationResponse);
     } catch (err: unknown) {
       const message =
         err instanceof Error
@@ -82,11 +95,13 @@ export default function App() {
         body: JSON.stringify({ context: inputContext, followUpNote }),
       });
 
-      const data = await res.json();
+      const data = await parseJsonResponse(res);
       if (!res.ok) {
-        throw new Error(data.message || 'Could not refine recommendation.');
+        throw new Error(
+          typeof data.message === 'string' ? data.message : 'Could not refine recommendation.'
+        );
       }
-      setRecommendation(data as NavigatorRecommendationResponse);
+      setRecommendation(data as unknown as NavigatorRecommendationResponse);
     } catch (err: unknown) {
       const message =
         err instanceof Error ? err.message : 'Unable to refine recommendation right now.';

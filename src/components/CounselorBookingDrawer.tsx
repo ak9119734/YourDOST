@@ -68,10 +68,16 @@ export const CounselorBookingDrawer: React.FC<CounselorBookingDrawerProps> = ({
           priorityCallback: isPriority,
         }),
       });
+      const raw = await res.text();
+      let data: BookingConfirmation;
+      try {
+        data = JSON.parse(raw) as BookingConfirmation;
+      } catch {
+        throw new Error('Could not confirm booking slot.');
+      }
       if (!res.ok) {
         throw new Error('Could not confirm booking slot.');
       }
-      const data = (await res.json()) as BookingConfirmation;
       setConfirmation(data);
     } catch {
       setErrorMsg('Unable to reserve this slot right now. Please try again.');
